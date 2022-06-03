@@ -22,14 +22,11 @@ function App() {
         <h1>TO DO LIST</h1>
         <TextField
           value={toDo}
-          onChange={(e) => {
-            if ((e.target.value) ==="") alert(""); else setToDo(e.target.value);
-          }}
+          onChange={(e) => setToDo(e.target.value)}
           id="outlined-basic"
           placeholder="Enter a to-do task.."
           className="input-field"
-          variant="outlined"
-        />
+          variant="outlined"/>
         &nbsp;
         <Button
           onClick={() =>
