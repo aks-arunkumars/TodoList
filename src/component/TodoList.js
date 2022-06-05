@@ -9,9 +9,8 @@ export default function TodoList(props) {
     removeToDo(id);
   };
   const strike = (e) => {
-    
-    e.target.classList.toggle("strike");
-  }
+    e.target.classList.toggle('strike');
+  };
 
   return (
     <div>
@@ -20,9 +19,9 @@ export default function TodoList(props) {
           <label className={"b-contain"}>
             <input type="checkbox" onChange={() => handleToggle(value.id)} />
             <div className="b-input"></div>
-            {value.task} </label>
+             </label>
           <p style={{ cursor: "pointer" }} onClick={strike}>
-         
+         {value.task}
           </p>
           <div>
             <CreateIcon
