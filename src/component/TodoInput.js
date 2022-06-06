@@ -1,10 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect, useRef} from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 
 export default function TodoInput(props) {
-  const [toDo, setToDo] = useState("");
+  const inputRef = useRef();
 
+  useEffect(() => {
+    console.log("use effect ran");
+    inputRef.current.focus();
+  });
+  const [toDo, setToDo] = useState("");
+  
   const handleChange = (e) => {
     setToDo(e.target.value);
   };
@@ -18,6 +24,7 @@ export default function TodoInput(props) {
       <TextField
         value={toDo}
         onChange={handleChange}
+        ref={inputRef}
         id="outlined-basic"
         placeholder="Enter a to-do task.."
         className="input-field"

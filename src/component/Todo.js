@@ -4,9 +4,11 @@ import TodoInput from "./TodoInput";
 import { v4 as uuid } from "uuid";
 export default function Todo() {
   const [toDos, setToDos] = useState([]);
+ 
+  
 
   const handleSubmit = (toDo) => {
-    setToDos([...toDos, { id: uuid(), task: toDo, isDone: false, }]);
+    setToDos([...toDos, { id: uuid(), task: toDo, isDone: false }]);
   };
   const removeToDo = (id) => {
     const filter = toDos.filter((value) => {
@@ -16,7 +18,6 @@ export default function Todo() {
     setToDos(filter);
   };
   const handleToggle = (id) => {
-   
     const checkedToDos = toDos.map((value) => {
       if (value.id === id) value.isDone = !value.isDone;
       return value;
@@ -24,6 +25,17 @@ export default function Todo() {
     setToDos(checkedToDos);
     // console.log(toDos)
   };
+  function submitEditToDo(id, newEditedToDo) {
+    const updatedTodos = [...toDos].map((value) => {
+      if (value.id === id) {
+        value.task = newEditedToDo;
+      }
+      return value;
+    });
+    setToDos(updatedTodos);
+    
+  }
+
   return (
     <div className="container">
       <TodoInput handleSubmit={handleSubmit} />
@@ -31,6 +43,7 @@ export default function Todo() {
         toDos={toDos}
         removeToDo={removeToDo}
         handleToggle={handleToggle}
+        submitEditToDo={submitEditToDo}
       />
     </div>
   );

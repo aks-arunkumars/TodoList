@@ -130,7 +130,11 @@
 }
 
 /*check box css ends */
-
+.edit-todo{
+  width: 27rem;
+  font-size: 16px;
+  border: 0;
+}
 @media only screen and (max-width: 768px) {
   .container {
     width: 100vw;
@@ -146,7 +150,16 @@
     margin-top: 10px !important;
   }
   .list {
-    width: 80vw;
+    width: 90vw;
     flex-wrap: wrap;
+    overflow: hidden;
   }
+  .edit-todo{
+  width: 55vw;
+  border: 0;
+}
+.edit-todo:focus {
+  outline: none;
+  
+}
 }
