@@ -135,6 +135,10 @@
   font-size: 16px;
   border: 0;
 }
+.edit-todo:focus {
+  outline: none;
+  
+}
 @media only screen and (max-width: 768px) {
   .container {
     width: 100vw;
@@ -158,8 +162,5 @@
   width: 55vw;
   border: 0;
 }
-.edit-todo:focus {
-  outline: none;
-  
-}
+
 }

@@ -3,22 +3,25 @@ import CreateIcon from "@mui/icons-material/Create";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import "./TodoList.css";
+import AlertDialog from "./AlertDialog";
 
 export default function TodoList(props) {
-  
   const { toDos, removeToDo, handleToggle, submitEditToDo } = props;
-  const [newEditedToDo, setNewEditedToDo] = useState("")
-   const [editToDo, setEditToDo] = useState(null);
+  const [newEditedToDo, setNewEditedToDo] = useState("");
+  const [editToDo, setEditToDo] = useState(null);
+
+  const [state, setState] = useState(false);
+
   const handleRemoveToDo = (id) => {
     removeToDo(id);
+    setState(false);
   };
-  const strike = (e) => {
-    e.target.classList.toggle("strike");
-  };
+
   const handleEditToDo = (id, newEditedToDo) => {
     submitEditToDo(id, newEditedToDo);
     setEditToDo(null);
   };
+
   return (
     <div>
       {toDos.map((value) => (
@@ -31,11 +34,14 @@ export default function TodoList(props) {
             <input
               type="text"
               className="edit-todo"
-              placeholder="Edit and update.."
+              value={value.task}
               onChange={(e) => setNewEditedToDo(e.target.value)}
             />
           ) : (
-            <p style={{ cursor: "pointer" }} onClick={strike}>
+            <p
+              className={value?.isDone ? "strike" : ""}
+              style={{ cursor: "pointer" }}
+            >
               {value.task}
             </p>
           )}
@@ -54,8 +60,14 @@ export default function TodoList(props) {
             )}
 
             <RemoveCircleIcon
-              onClick={() => handleRemoveToDo(value.id)}
+              onClick={() => setState(true)}
               style={{ color: "red", cursor: "pointer" }}
+            />
+            <AlertDialog
+              handleRemove={() => handleRemoveToDo(value.id)}
+              text={value.task}
+              isOpen={state}
+              handleClose={() => setState(false)}
             />
           </div>
         </div>

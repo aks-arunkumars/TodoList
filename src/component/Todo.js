@@ -26,14 +26,14 @@ export default function Todo() {
     // console.log(toDos)
   };
   function submitEditToDo(id, newEditedToDo) {
-    const updatedTodos = [...toDos].map((value) => {
+    const todoAfterEdit = [...toDos].map((value) => {
       if (value.id === id) {
         value.task = newEditedToDo;
       }
       return value;
     });
-    setToDos(updatedTodos);
-    
+    setToDos(todoAfterEdit);
+    // console.log(toDos);
   }
 
   return (
