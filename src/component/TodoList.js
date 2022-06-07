@@ -10,11 +10,11 @@ export default function TodoList(props) {
   const [newEditedToDo, setNewEditedToDo] = useState("");
   const [editToDo, setEditToDo] = useState(null);
 
-  const [state, setState] = useState(false);
+  const [isModal, setIsModal] = useState(false);
 
   const handleRemoveToDo = (id) => {
     removeToDo(id);
-    setState(false);
+    setIsModal(false);
   };
 
   const handleEditToDo = (id, newEditedToDo) => {
@@ -34,7 +34,7 @@ export default function TodoList(props) {
             <input
               type="text"
               className="edit-todo"
-              value={value.task}
+              defaultValue={value.task}
               onChange={(e) => setNewEditedToDo(e.target.value)}
             />
           ) : (
@@ -60,14 +60,14 @@ export default function TodoList(props) {
             )}
 
             <RemoveCircleIcon
-              onClick={() => setState(true)}
+              onClick={() => setIsModal(true)}
               style={{ color: "red", cursor: "pointer" }}
             />
             <AlertDialog
               handleRemove={() => handleRemoveToDo(value.id)}
               text={value.task}
-              isOpen={state}
-              handleClose={() => setState(false)}
+              isOpen={isModal}
+              handleClose={() => setIsModal(false)}
             />
           </div>
         </div>
