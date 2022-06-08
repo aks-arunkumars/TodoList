@@ -5,12 +5,12 @@ import TodoInput from "./TodoInput";
 //UUID for unique id
 import { v4 as uuid } from "uuid";
 
+const MyContext = React.createContext();
 export default function Todo() {
   const [toDos, setToDos] = useState([]);
 
   const handleSubmit = (toDo) => {
     setToDos([...toDos, { id: uuid(), task: toDo, isDone: false }]);
-
   };
   const removeToDo = (id) => {
     const filter = toDos.filter((value) => {
@@ -18,7 +18,6 @@ export default function Todo() {
       else return value;
     });
     setToDos(filter);
-
   };
   const handleToggle = (id) => {
     const checkedToDos = toDos.map((value) => {
@@ -26,7 +25,7 @@ export default function Todo() {
       return value;
     });
     setToDos(checkedToDos);
-
+    // console.log(toDos)
   };
   const submitEditToDo = (id, newEditedToDo) => {
     const todoAfterEdit = [...toDos].map((value) => {
@@ -36,18 +35,17 @@ export default function Todo() {
       return value;
     });
     setToDos(todoAfterEdit);
-    // console.log(toDos);
   };
 
   return (
     <div className="container">
-      <TodoInput handleSubmit={handleSubmit} />
-      <TodoList
-        toDos={toDos}
-        removeToDo={removeToDo}
-        handleToggle={handleToggle}
-        submitEditToDo={submitEditToDo}
-      />
+      <MyContext.Provider
+        value={{ toDos, removeToDo, handleToggle, submitEditToDo }}
+      >
+        <TodoInput handleSubmit={handleSubmit} />
+        <TodoList/>
+      </MyContext.Provider>
     </div>
   );
 }
+export { MyContext };

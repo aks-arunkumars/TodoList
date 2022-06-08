@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
 // //Material UI
-//  import { createTheme } from "@mui/material/styles";
 
 import CreateIcon from "@mui/icons-material/Create";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
@@ -9,18 +8,16 @@ import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 
 //Component
 import AlertDialog from "./AlertDialog";
+
+//Context
+import { MyContext } from "./Todo";
+
 //CSS
 import "./TodoListItem.css";
-// const theme = createTheme({
 
-//   palette: {
-//     primary: {
-//       main: "#b71c1c"
-//     }
-//   },
-// });
-export default function TodoListItem(props) {
-  const { toDos, removeToDo, handleToggle, submitEditToDo } = props;
+export default function TodoListItem() {
+  const { toDos, removeToDo, handleToggle, submitEditToDo } =
+    useContext(MyContext);
   const [newEditedToDo, setNewEditedToDo] = useState("");
   const [editToDo, setEditToDo] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
