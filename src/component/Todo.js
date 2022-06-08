@@ -5,6 +5,7 @@ import TodoInput from "./TodoInput";
 //UUID for unique id
 import { v4 as uuid } from "uuid";
 
+const MyContext = React.createContext();
 export default function Todo() {
   const [toDos, setToDos] = useState([]);
 
@@ -38,13 +39,16 @@ export default function Todo() {
 
   return (
     <div className="container">
-      <TodoInput handleSubmit={handleSubmit} />
-      <TodoList
-        toDos={toDos}
-        removeToDo={removeToDo}
-        handleToggle={handleToggle}
-        submitEditToDo={submitEditToDo}
-      />
+      <MyContext.Provider value={{toDos,removeToDo, handleToggle, submitEditToDo}}>
+        <TodoInput handleSubmit={handleSubmit} />
+        <TodoList
+          // toDos={toDos}
+          // removeToDo={removeToDo}
+          // handleToggle={handleToggle}
+          // submitEditToDo={submitEditToDo}
+        />
+      </MyContext.Provider>
     </div>
   );
 }
+export  { MyContext };
