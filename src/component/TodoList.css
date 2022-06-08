@@ -43,6 +43,7 @@
 }
 .strike {
   text-decoration: line-through;
+  cursor: "pointer";
 }
 /* check box css */
 
@@ -130,14 +131,13 @@
 }
 
 /*check box css ends */
-.edit-todo{
+.edit-todo {
   width: 27rem;
   font-size: 16px;
   border: 0;
 }
 .edit-todo:focus {
   outline: none;
-  
 }
 @media only screen and (max-width: 768px) {
   .container {
@@ -158,9 +158,8 @@
     flex-wrap: wrap;
     overflow: hidden;
   }
-  .edit-todo{
-  width: 55vw;
-  border: 0;
-}
-
+  .edit-todo {
+    width: 55vw;
+    border: 0;
+  }
 }
