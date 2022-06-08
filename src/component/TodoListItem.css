@@ -1,0 +1,12 @@
+.edit-icon {
+  color: black;
+  cursor: pointer;
+}
+.remove-icon{
+  color: red;
+  cursor: pointer;
+}
+.submit-edit-icon{
+  color: #056608;
+  cursor: pointer;
+}

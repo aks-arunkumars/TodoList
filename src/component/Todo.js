@@ -1,14 +1,16 @@
 import React, { useState } from "react";
+//Component
 import TodoList from "./TodoList";
 import TodoInput from "./TodoInput";
+//UUID for unique id
 import { v4 as uuid } from "uuid";
+
 export default function Todo() {
   const [toDos, setToDos] = useState([]);
- 
-  
 
   const handleSubmit = (toDo) => {
     setToDos([...toDos, { id: uuid(), task: toDo, isDone: false }]);
+
   };
   const removeToDo = (id) => {
     const filter = toDos.filter((value) => {
@@ -16,6 +18,7 @@ export default function Todo() {
       else return value;
     });
     setToDos(filter);
+
   };
   const handleToggle = (id) => {
     const checkedToDos = toDos.map((value) => {
@@ -23,9 +26,9 @@ export default function Todo() {
       return value;
     });
     setToDos(checkedToDos);
-    // console.log(toDos)
+
   };
-  function submitEditToDo(id, newEditedToDo) {
+  const submitEditToDo = (id, newEditedToDo) => {
     const todoAfterEdit = [...toDos].map((value) => {
       if (value.id === id) {
         value.task = newEditedToDo;
@@ -34,7 +37,7 @@ export default function Todo() {
     });
     setToDos(todoAfterEdit);
     // console.log(toDos);
-  }
+  };
 
   return (
     <div className="container">
