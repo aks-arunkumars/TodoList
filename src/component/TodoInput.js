@@ -1,8 +1,21 @@
+<<<<<<< Updated upstream
 import { useState} from "react";
+=======
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+
+//Mui
+>>>>>>> Stashed changes
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import { toDosSlice } from "../Redux/ToDos/toDosSlice";
 
 export default function TodoInput(props) {
+<<<<<<< Updated upstream
+=======
+  const dispatch = useDispatch();
+  const [toDo, setToDo] = useState("");
+>>>>>>> Stashed changes
 
   const [toDo, setToDo] = useState("");
   
@@ -11,6 +24,8 @@ export default function TodoInput(props) {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+    let obj = {  id: Date.now(), task: toDo, isDone: false };
+    dispatch(toDosSlice.actions.addItemToToDos(obj));
     props.handleSubmit(toDo);
     setToDo("");
   };

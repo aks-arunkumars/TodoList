@@ -1,7 +1,15 @@
+<<<<<<< Updated upstream
 import React, { useState } from "react";
 import CreateIcon from "@mui/icons-material/Create";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+=======
+import React from "react";
+
+// import { useSelector } from "react-redux";
+
+//CSS
+>>>>>>> Stashed changes
 import "./TodoList.css";
 import AlertDialog from "./AlertDialog";
 
@@ -22,6 +30,7 @@ export default function TodoList(props) {
     setEditToDo(null);
   };
 
+<<<<<<< Updated upstream
   return (
     <div>
       {toDos.map((value) => (
@@ -72,6 +81,15 @@ export default function TodoList(props) {
           </div>
         </div>
       ))}
+=======
+export default function TodoList() {
+  // const toDos = useSelector((state) => state.toDos[1].id);
+  // console.log("Reduxxx "+ toDos);
+  return (
+    <div>
+      
+      <TodoListItem />
+>>>>>>> Stashed changes
     </div>
   );
 }
